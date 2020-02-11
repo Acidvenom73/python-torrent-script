@@ -22,11 +22,11 @@ def single():
 
     search = input()
 
-    url = "https://kickasstorrents.to/usearch/" + search
+    url = "https://magnetdl.me/search/" + search + "/"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
     try:
-        Data = list(soup.findAll(title="Download torrent file"))
+        Data = list(soup.findAll(title="Direct Download"))
     except IndexError:
         print("No torrents found!")
         return True
@@ -39,10 +39,11 @@ def single():
         except IndexError:
             print("Out of torrents!")
             return True
-        link = link.partition(" target=")[0]
-        link = link.partition("/download/")[2]
-        link = link.replace("\"", "")
-        print(link)
+        link = link.partition("<a href=\"")[2]
+        link = link.partition("\" rel=\"")[0]
+        title = link.split("dn=")[1]
+        title = title.split("&amp;")[0]
+        print(title)
         while(ans != "Y" and ans != "N" and ans != "C"):
             print("Y = Yes, N = No, C = Cancel")
             ans = input()
@@ -51,14 +52,6 @@ def single():
         elif ans == "C":
             return False
         i+=1
-
-    url = "https://kickasstorrents.to/" + link
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    link = str(soup.findAll(title="Magnet link"))
-    link = link.partition("title=")[0]
-    link = link.partition("href=")[2]
-    link = link.replace("\"", "")
 
     open(link)
     print(link)
