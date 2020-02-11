@@ -19,9 +19,8 @@ def main():
 
 
 def single():
-
+    print("Input your search: ")
     search = input()
-
     url = "https://magnetdl.me/search/" + search + "/"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
