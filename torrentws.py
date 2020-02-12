@@ -4,23 +4,44 @@ import urllib.request
 import time
 from bs4 import BeautifulSoup
 from webbrowser import open
+import tkinter as tk
 
-def main():
+def gui():
+    window = tk.Tk()
+    window.title("Torrent helper")
+    window.geometry('700x350')
 
-    ans = ""
-    print("Options: Press 1 for Single Download")
-    while(not ans == "1"):
-        ans = input()
-        if ans == "1":
-            single()
-        elif ans == "X" or ans == "C":
-            break
+    searchinput = tk.Entry(window, width=40)
+    searchinput.grid(column=2, row=0)
+    listbox  = tk.Listbox(window, selectmode="SINGLE", width="50")
+    listbox.grid(column=3, row=3)
+    Link, Titles = list(), list()
+
+    def search():
+        global Titles
+        global Link
+        Link, Titles = single(searchinput.get())
+        for x, val in enumerate(Titles):
+            listbox.insert(x, val)
+
+    def download(): 
+        global Link
+        selection = listbox.curselection()[0]
+        open(Link[selection])
+
+    downloadbtn = tk.Button(window, text="Download", command=download)
+    downloadbtn.grid(column=3, row=4)
+    searchbtn = tk.Button(window, text="Search:", command=search)
+    searchbtn.grid(column=0, row=0)
+    window.mainloop()
     return
 
 
-def single():
-    print("Input your search: ")
-    search = input()
+def main():
+    gui()
+
+
+def single(search):
     url = "https://magnetdl.me/search/" + search + "/"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -28,91 +49,24 @@ def single():
         Data = list(soup.findAll(title="Direct Download"))
     except IndexError:
         print("No torrents found!")
-        return True
+        return False
 
-    i = 0
-    while(True):
-        ans = ""
-        try:
-            link = str(Data[i])
-        except IndexError:
-            print("Out of torrents!")
-            return True
-        link = link.partition("<a href=\"")[2]
-        link = link.partition("\" rel=\"")[0]
-        title = link.split("dn=")[1]
-        title = title.split("&amp;")[0]
-        print(title)
-        while(ans != "Y" and ans != "N" and ans != "C"):
-            print("Y = Yes, N = No, C = Cancel")
-            ans = input()
-        if ans == "Y":
-            break
-        elif ans == "C":
-            return False
-        i+=1
+    def linkpartition(link):
+        link = str(link)
+        ret = link.partition("<a href=\"")[2]
+        ret = ret.partition("\" rel=\"")[0]
+        return ret
 
-    open(link)
-    print(link)
-    return True
+    def titlepartition(link):
+        ret = linkpartition(link)
+        ret = ret.split("dn=")[1]
+        ret = ret.split("&amp;")[0]
+        return ret
 
-# def batch():
-#     print("BATCH DOWNLOAD")
+    Link = list(map(linkpartition, Data))
+    Titles = list(map(titlepartition, Data))
 
-#     episode_counter = 0
-#     print("Torrent name:")
-#     search = input()
-
-#     print("Season: ", end="")
-#     season = "S0" + input()
-
-#     while(True):
-#         episode_counter+=1
-#         if episode_counter < 10:
-#             episode = "E0" + str(episode_counter)
-#         else:
-#             episode = str(episode_counter)
-#         url = "https://kickasstorrents.to/usearch/" + search + " " + season + episode
-#         print(url)
-#         response = requests.get(url)
-#         soup = BeautifulSoup(response.text, "html.parser")
-#         try:
-#             Data = list(soup.findAll(title="Download torrent file"))
-#         except IndexError:
-#             print("No more episodes found!")
-#             return True
-#         i = 0
-#         while(True):
-#             ans = ""
-#             try:
-#                 link = str(Data[i])
-#             except IndexError:
-#                 print("Out of torrents!")
-#                 return True
-#             link = link.partition(" target=")[0]
-#             link = link.partition("/download/")[2]
-#             link = link.replace("\"", "")
-#             print(link)
-#             while(ans != "Y" and ans != "N" and ans != "C"):
-#                 print("Y = Yes, N = No, C = Cancel")
-#                 ans = input()
-#             if ans == "Y":
-#                 break
-#             elif ans == "C":
-#                 return False
-#             i+=1
-
-#         url = "https://kickasstorrents.to/" + link
-#         response = requests.get(url)
-#         soup = BeautifulSoup(response.text, "html.parser")
-#         link = str(soup.findAll(title="Magnet link"))
-#         link = link.partition("title=")[0]
-#         link = link.partition("href=")[2]
-#         link = link.replace("\"", "")
-
-#         open(link)
-#         print(link)
-
+    return [Link, Titles]
 
 if __name__ == "__main__":
     main()
