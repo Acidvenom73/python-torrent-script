@@ -1,5 +1,5 @@
 ('C:\\Users\\Oskar '
- 'Henriksson\\Desktop\\Coding\\python-torrent-script\\executable\\build\\torrentws\\PYZ-00.pyz',
+ 'Henriksson\\Desktop\\Coding\\python-torrent-script\\build\\torrentws\\PYZ-00.pyz',
  [('ssl',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\ssl.py',
@@ -96,17 +96,13 @@
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\stat.py',
    'PYMODULE'),
-  ('tracemalloc',
+  ('tokenize',
    'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tokenize.py',
    'PYMODULE'),
-  ('pickle',
+  ('token',
    'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\pickle.py',
-   'PYMODULE'),
-  ('pprint',
-   'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\pprint.py',
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
    'PYMODULE'),
   ('doctest',
    'c:\\users\\oskar '
@@ -132,6 +128,10 @@
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\loader.py',
    'PYMODULE'),
+  ('fnmatch',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'PYMODULE'),
   ('unittest.suite',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\suite.py',
@@ -140,9 +140,21 @@
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\unittest\\case.py',
    'PYMODULE'),
+  ('pprint',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\pprint.py',
+   'PYMODULE'),
   ('logging',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('pickle',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\pickle.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\_compat_pickle.py',
    'PYMODULE'),
   ('unittest.result',
    'c:\\users\\oskar '
@@ -348,14 +360,6 @@
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\urllib\\parse.py',
    'PYMODULE'),
-  ('tokenize',
-   'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tokenize.py',
-   'PYMODULE'),
-  ('token',
-   'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\token.py',
-   'PYMODULE'),
   ('platform',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\platform.py',
@@ -480,25 +484,29 @@
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\__future__.py',
    'PYMODULE'),
-  ('_compat_pickle',
+  ('tracemalloc',
    'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\_compat_pickle.py',
-   'PYMODULE'),
-  ('fnmatch',
-   'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\fnmatch.py',
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tracemalloc.py',
    'PYMODULE'),
   ('typing',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\typing.py',
    'PYMODULE'),
+  ('stringprep',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
+   'PYMODULE'),
   ('_py_abc',
    'c:\\users\\oskar '
    'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\_py_abc.py',
    'PYMODULE'),
-  ('stringprep',
+  ('tkinter',
    'c:\\users\\oskar '
-   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\stringprep.py',
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tkinter\\__init__.py',
+   'PYMODULE'),
+  ('tkinter.constants',
+   'c:\\users\\oskar '
+   'henriksson\\appdata\\local\\programs\\python\\python37\\lib\\tkinter\\constants.py',
    'PYMODULE'),
   ('webbrowser',
    'c:\\users\\oskar '

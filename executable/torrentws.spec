@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['torrentws.py'],
-             pathex=['C:\\Users\\Oskar Henriksson\\Desktop\\Coding\\python-torrent-script\\executable'],
+             pathex=['C:\\Users\\Oskar Henriksson\\Desktop\\Coding\\python-torrent-script'],
              binaries=[],
              datas=[],
              hiddenimports=[],
